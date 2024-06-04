@@ -17,8 +17,8 @@ valid_dir = "/Data_dogcat/valid"
 
 # Define the image size and batch size for training and testing
 img_size = 224
-batch_size = 8
-epoch = 3
+batch_size = 16
+epoch = 5
 
 # Define and load vgg16 model
 model = VGG16(include_top=False, input_shape=(224, 224, 3))
@@ -36,7 +36,7 @@ output = tf.keras.layers.Dense(1, activation='sigmoid')(class1)
 model = tf.keras.models.Model(inputs=model.inputs, outputs=output)
 
 # compile model
-opt = tf.keras.optimizers.SGD(lr=0.0005, momentum=0.9)
+opt = tf.keras.optimizers.SGD(lr=0.0001, momentum=0.9)
 model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
 
 
